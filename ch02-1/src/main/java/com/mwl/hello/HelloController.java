@@ -20,4 +20,9 @@ public class HelloController {
     public String index() {
         return "Hello world" + name + desc;
     }
+
+    @RequestMapping("getInfo")
+    public String info() {
+        return "desc:" + desc;
+    }
 }
