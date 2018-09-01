@@ -1,0 +1,19 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.git
+target
+*.log
+*.log.*
+/pinyougou-dao/pinyougou-dao.iml___jb_tmp___
+/sms_service/mvnw
+/sms_service/mvnw.cmd
+/sms_service/.mvn/
+/ch02-1/mvnw
+/ch02-1/mvnw.cmd
