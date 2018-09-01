@@ -17,3 +17,5 @@ target
 /sms_service/.mvn/
 /ch02-1/mvnw
 /ch02-1/mvnw.cmd
+/ch03-eureka-server/mvnw.cmd
+/ch03-eureka-server/mvnw
