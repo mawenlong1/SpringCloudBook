@@ -19,3 +19,5 @@ target
 /ch02-1/mvnw.cmd
 /ch03-eureka-server/mvnw.cmd
 /ch03-eureka-server/mvnw
+/ch03-ribbon-consume/mvnw
+/ch03-ribbon-consume/mvnw.cmd

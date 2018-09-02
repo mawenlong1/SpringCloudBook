@@ -1,0 +1,28 @@
+package com.mwl.ribbonconsume;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+/**
+ * @author mawenlong
+ * @date 2018/9/2
+ * describe:
+ */
+@EnableDiscoveryClient
+@SpringBootApplication
+public class ConsumeApplication {
+
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumeApplication.class, args);
+    }
+}
