@@ -15,9 +15,11 @@ import org.springframework.web.client.RestTemplate;
 public class ConsumeController {
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private HelloService helloService;
 
     @RequestMapping(value = "/ribbon-consume", method = RequestMethod.GET)
     public String helloConsume() {
-        return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
+        return helloService.helloService();
     }
 }
