@@ -1,5 +1,6 @@
 package com.mwl.ribbonconsume;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +18,15 @@ public class ConsumeController {
     private RestTemplate restTemplate;
     @Autowired
     private HelloService helloService;
+    private final Logger logger = Logger.getLogger(getClass());
 
     @RequestMapping(value = "/ribbon-consume", method = RequestMethod.GET)
     public String helloConsume() {
-        return helloService.helloService();
+        String result = "";
+        long start = System.currentTimeMillis();
+        result = helloService.helloService();
+        long end = System.currentTimeMillis();
+        logger.info("Spend Time :" + (end - start));
+        return result;
     }
 }
