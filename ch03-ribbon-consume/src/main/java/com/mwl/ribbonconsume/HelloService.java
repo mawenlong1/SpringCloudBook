@@ -2,6 +2,7 @@ package com.mwl.ribbonconsume;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
+import com.netflix.hystrix.exception.HystrixBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,12 +21,25 @@ public class HelloService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "helloFallback")
+    /**
+     * fallbackMethod 服务降级
+     * ignoreExceptions忽略异常,不会触发fallback逻辑
+     *
+     * @param
+     * @return java.lang.String
+     */
+    @HystrixCommand(fallbackMethod = "helloFallback", ignoreExceptions = {BadRequestException.class})
     public String helloService() {
         return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
     }
 
-    public String helloFallback() {
+    /**
+     * throwable处理异常
+     *
+     * @param throwable
+     * @return java.lang.String
+     */
+    public String helloFallback(Throwable throwable) {
         return "error";
     }
 
