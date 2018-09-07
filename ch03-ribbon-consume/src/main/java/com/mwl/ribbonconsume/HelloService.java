@@ -28,7 +28,7 @@ public class HelloService {
      * @param
      * @return java.lang.String
      */
-    @HystrixCommand(fallbackMethod = "helloFallback", ignoreExceptions = {BadRequestException.class})
+    @HystrixCommand(fallbackMethod = "helloFallback", ignoreExceptions = {HystrixBadRequestException.class})
     public String helloService() {
         return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
     }
