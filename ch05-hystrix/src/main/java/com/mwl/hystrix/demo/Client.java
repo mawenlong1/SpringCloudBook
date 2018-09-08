@@ -1,4 +1,4 @@
-package com.mwl.hystrix;
+package com.mwl.hystrix.demo;
 
 /**
  * @author mawenlong
