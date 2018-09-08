@@ -1,6 +1,9 @@
 package com.mwl.ribbonconsume;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheKey;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheRemove;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
 import com.netflix.hystrix.contrib.javanica.command.AsyncResult;
 import com.netflix.hystrix.exception.HystrixBadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,8 @@ public class HelloService {
      * @param
      * @return java.lang.String
      */
-    @HystrixCommand(fallbackMethod = "helloFallback", ignoreExceptions = {HystrixBadRequestException.class})
+    @HystrixCommand(fallbackMethod = "helloFallback", ignoreExceptions = {HystrixBadRequestException.class},
+            commandKey = "getUserById", groupKey = "UserGroup", threadPoolKey = "getUserByIdThread")
     public String helloService() {
         return restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
     }
@@ -45,13 +49,33 @@ public class HelloService {
 
     /**
      * 同步执行
+     * <p>
+     * CacheKey优先级低于CacheResult的cacheKeyMethod
      *
      * @param id
      * @return com.mwl.ribbonconsume.User
      */
+    @CacheResult(cacheKeyMethod = "getUserIdCacheKey")
     @HystrixCommand
-    public User getUserById(Long id) {
+    public User getUserById(@CacheKey("id") Long id) {
         return restTemplate.getForObject("http://USER-SERVICE/users/{1}", User.class, id);
+    }
+
+    /**
+     * 清楚缓存，commandKey必须指定
+     *
+     * @param user
+     * @return com.mwl.ribbonconsume.User
+     */
+    @CacheRemove(commandKey = "getUserIdCacheKey")
+    @HystrixCommand
+    public User update(@CacheKey("id") User user) {
+        return restTemplate.postForObject("http://USER-SERVICE/users/{1}", user, User.class);
+    }
+
+
+    private Long getUserIdCacheKey(Long id) {
+        return id;
     }
 
     /**

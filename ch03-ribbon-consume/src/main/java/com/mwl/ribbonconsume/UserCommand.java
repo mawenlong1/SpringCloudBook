@@ -1,6 +1,9 @@
 package com.mwl.ribbonconsume;
 
 import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixThreadPoolKey;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -13,7 +16,9 @@ public class UserCommand extends HystrixCommand<User> {
     private Long id;
 
     protected UserCommand(Setter setter, RestTemplate restTemplate, Long id) {
-        super(setter);
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("GroupName"))
+                .andCommandKey(HystrixCommandKey.Factory.asKey("CommandName"))
+                .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("THreadPoolKey")));
         this.restTemplate = restTemplate;
         this.id = id;
     }
@@ -21,6 +26,11 @@ public class UserCommand extends HystrixCommand<User> {
     @Override
     protected User run() {
         return restTemplate.getForObject("http://USER-SERVICE/users/{1}", User.class, id);
+    }
+
+    @Override
+    protected String getCacheKey() {
+        return String.valueOf(id);
     }
 
     @Override
