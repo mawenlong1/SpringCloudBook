@@ -44,3 +44,6 @@ ch03-ribbon-consume/src/test/
 /ch05-turbine/.gitignore
 /ch05-turbine/mvnw.cmd
 /ch05-turbine/mvnw
+/ch05-turbine-amqp/mvnw
+/ch05-turbine-amqp/.gitignore
+/ch05-turbine-amqp/mvnw.cmd
