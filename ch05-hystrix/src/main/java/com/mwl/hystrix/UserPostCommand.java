@@ -1,6 +1,7 @@
 package com.mwl.hystrix;
 
 
+import com.mwl.hystrix.userservice.User;
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import org.springframework.web.client.RestTemplate;

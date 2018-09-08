@@ -1,5 +1,6 @@
 package com.mwl.hystrix;
 
+import com.mwl.hystrix.userservice.User;
 import com.netflix.hystrix.HystrixObservableCommand;
 import org.springframework.web.client.RestTemplate;
 import rx.Observable;

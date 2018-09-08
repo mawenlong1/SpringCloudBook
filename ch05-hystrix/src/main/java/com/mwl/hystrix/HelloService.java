@@ -1,5 +1,6 @@
 package com.mwl.hystrix;
 
+import com.mwl.hystrix.userservice.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheKey;
 import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheRemove;
