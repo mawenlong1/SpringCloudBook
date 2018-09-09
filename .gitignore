@@ -47,3 +47,6 @@ ch03-ribbon-consume/src/test/
 /ch05-turbine-amqp/mvnw
 /ch05-turbine-amqp/.gitignore
 /ch05-turbine-amqp/mvnw.cmd
+/ch06-feign-consume/.gitignore
+/ch06-feign-consume/mvnw
+/ch06-feign-consume/mvnw.cmd
