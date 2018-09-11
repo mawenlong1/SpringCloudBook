@@ -1,5 +1,6 @@
 package com.mwl.feignconsume;
 
+import com.mwl.feignconsume.fallback.HelloServiceFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018/09/10
  * describe:
  */
-@FeignClient(value = "hello-service", configuration = DisableHystrixConfiguration.class)
+@FeignClient(value = "hello-service", fallback = HelloServiceFallback.class)
 public interface HelloService {
 
     @RequestMapping("/hello")
