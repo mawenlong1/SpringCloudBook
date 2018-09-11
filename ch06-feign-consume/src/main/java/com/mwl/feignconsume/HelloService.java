@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2018/09/10
  * describe:
  */
-@FeignClient("hello-service")
+@FeignClient(value = "hello-service", configuration = DisableHystrixConfiguration.class)
 public interface HelloService {
 
     @RequestMapping("/hello")
