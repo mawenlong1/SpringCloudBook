@@ -70,3 +70,9 @@ hello-service-api/src/test/
 /ch08-config-server/.gitignore
 /ch08-config-server/mvnw
 /ch08-config-server/mvnw.cmd
+/ch08-config-client/mvnw.cmd
+/ch08-config-client/mvnw
+/ch08-config-client/.gitignore
+ch07-api-gateway/.mvn/
+ch07-api-gateway/src/test/
+ch08-config-server/.mvn/
