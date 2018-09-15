@@ -67,3 +67,6 @@ ch06-feign-consume/src/test/
 
 hello-service-api/src/main/resources/
 hello-service-api/src/test/
+/ch08-config-server/.gitignore
+/ch08-config-server/mvnw
+/ch08-config-server/mvnw.cmd
