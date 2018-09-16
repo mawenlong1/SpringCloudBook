@@ -76,3 +76,5 @@ hello-service-api/src/test/
 ch07-api-gateway/.mvn/
 ch07-api-gateway/src/test/
 ch08-config-server/.mvn/
+/ch09-rabbitmq-hello/mvnw.cmd
+/ch09-rabbitmq-hello/mvnw
