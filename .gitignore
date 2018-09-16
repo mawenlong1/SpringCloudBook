@@ -78,3 +78,5 @@ ch07-api-gateway/src/test/
 ch08-config-server/.mvn/
 /ch09-rabbitmq-hello/mvnw.cmd
 /ch09-rabbitmq-hello/mvnw
+/ch10-stream-hello/mvnw
+/ch10-stream-hello/mvnw.cmd
